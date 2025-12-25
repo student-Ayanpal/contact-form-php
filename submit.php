@@ -21,11 +21,16 @@ if(!$conn){
     die("Connection failed: ");
 }
 
-$sql = "INSERT INTO MESSAGES(NAME,EMAIL,MESSAGE) VALUES ('$name','$email','$message')";
+$sql = "INSERT INTO MESSAGES(NAME,EMAIL,MESSAGE) VALUES (?,?,?)";
+$stmt= mysqli_prepare($conn,$sql);
+mysqli_stmt_bind_param($stmt,"sss",$name,$email,$message);
+mysqli_stmt_execute($stmt);
 
-if(mysqli_query($conn,$sql)){
-    echo "<h2>Message saved successfully!</h2>";
-}
+// if(mysqli_query($conn,$sql)){
+    // echo "<h2>Message saved successfully!</h2>";
+// }
+
+echo "<h2>Message saved successfully!</h2>";
 mysqli_close($conn);
 
 
