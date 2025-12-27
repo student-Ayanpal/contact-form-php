@@ -1,16 +1,15 @@
 <?php
-// 1. Validate ID
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die("Invalid request");
 }
 
 $id = $_GET['id'];
 
-// 2. Connect to DB
+
 $conn = mysqli_connect("localhost", "root", "", "contact_db");
 if (!$conn) die("DB connection failed");
 
-// 3. Fetch existing data
+
 $sql = "SELECT name, email, message FROM messages WHERE id = ?";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "i", $id);
