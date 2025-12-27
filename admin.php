@@ -28,6 +28,7 @@ $result = mysqli_query($conn, $sql);
             <th>Name</th>
             <th>Email</th>
             <th>Message</th>
+            <th>Action</th>
         </tr>
         <?php
         if (mysqli_num_rows($result) > 0) {
@@ -37,6 +38,8 @@ $result = mysqli_query($conn, $sql);
                 echo "<td>" . htmlspecialchars($row['name']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['email']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['message']) . "</td>";
+                echo "<td><a href='delete.php?id=".$row['id']."'onclick=\"return confirm('Are you sure you want to delete this message?');\">Delete</a></td>";
+
                 echo "</tr>";
             }
         } 
