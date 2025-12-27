@@ -38,7 +38,13 @@ $result = mysqli_query($conn, $sql);
                 echo "<td>" . htmlspecialchars($row['name']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['email']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['message']) . "</td>";
-                echo "<td><a href='delete.php?id=".$row['id']."'onclick=\"return confirm('Are you sure you want to delete this message?');\">Delete</a></td>";
+               echo "<td>
+        <a href='edit.php?id=".$row['id']."'>Edit</a> |
+        <a href='delete.php?id=".$row['id']."'
+           onclick=\"return confirm('Are you sure you want to delete this message?');\">
+           Delete
+        </a>
+      </td>";
 
                 echo "</tr>";
             }
