@@ -1,4 +1,13 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['admin_logged_in'])) {
+    header("Location: login.php");
+    exit;
+}
+?>
+
+<?php
 
 if (
     !isset($_POST['id'], $_POST['name'], $_POST['email'], $_POST['message']) ||

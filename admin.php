@@ -1,4 +1,12 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['admin_logged_in'])) {
+    header("Location: login.php");
+    exit;
+}
+?>
+<?php
 
 $conn = mysqli_connect("localhost", "root", "", "contact_db");
 
@@ -55,5 +63,7 @@ $result = mysqli_query($conn, $sql);
         mysqli_close($conn);
         ?>
     </table>
+    <br>
+    <a href="logout.php">Logout</a>
 </body>
 </html>
